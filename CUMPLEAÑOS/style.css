@@ -1,0 +1,177 @@
+html, body {
+  height: 100%;
+  overflow-x: hidden;
+  background: linear-gradient(145deg, #ffe4e1, #fcd3c3, #ffc0cb);
+  background-attachment: fixed;
+}
+
+h1 {
+  color: #e91e63;
+}
+
+img {
+  object-fit: cover;
+}
+
+p {
+  color: white;
+}
+
+.mensaje span {
+  font-size: 1.5rem;
+}
+
+#mensaje {
+  color: #e18948;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.texto-principal {
+  font-size: 1.25rem;
+  color: #333333;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.color-mensaje {
+  color: #ff5733;
+}
+
+#videoFondo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+  object-fit: fill;
+  z-index: -1;
+}
+
+.image-container {
+  width: 422px;
+  height: 565px;
+  overflow: hidden;
+  margin: 0 auto;
+  position: relative;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  /* Mantiene proporción, recorta lo que sobra */
+  transition: transform 0.3s ease;
+}
+
+.cofre-wrapper {
+  width: 422px;
+  height: 565px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin: 0 auto;
+  position: relative;
+}
+
+.cofre-wrapper img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+
+.cofre {
+  cursor: pointer;
+  max-width: 85%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cofre:hover {
+  animation: rebote 0.6s ease;
+}
+
+@keyframes rebote {
+  0% {
+    transform: scale(1) translateY(0);
+  }
+
+  30% {
+    transform: scale(1.07) translateY(-6px);
+  }
+
+  60% {
+    transform: scale(1.03) translateY(-3px);
+  }
+
+  100% {
+    transform: scale(1.05) translateY(-5px);
+  }
+}
+
+@keyframes desaparecer {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}
+
+.animar-cofre {
+  animation: desaparecer 0.5s ease forwards;
+}
+
+#globos-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* para que no interfieran con clics */
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.globo {
+  width: 70px;
+  height: 95px;
+  border-radius: 50% 50% 45% 45%;
+  position: absolute;
+  bottom: -100px;
+  opacity: 0.95;
+  animation: flotar 8s ease-in-out forwards;
+  box-shadow: inset -4px -6px 10px rgba(0,0,0,0.2);
+}
+
+.globo::after {
+  content: '';
+  position: absolute;
+  bottom: -35px;
+  left: 50%;
+  width: 20px;
+  height: 40px;
+  transform: translateX(-50%);
+  background-image: url('data:image/svg+xml;utf8,<svg width="20" height="40" xmlns="http://www.w3.org/2000/svg"><path d="M10 0 Q0 10 10 20 Q20 30 10 40" stroke="black" fill="transparent" stroke-width="2"/></svg>');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+@keyframes flotar {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateY(-400px) translateX(-10px); /* un poco más de subida */
+  }
+  100% {
+    transform: translateY(-900px) translateX(10px);
+    opacity: 0;
+  }
+}
